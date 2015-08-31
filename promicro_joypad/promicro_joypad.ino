@@ -27,6 +27,10 @@ static JoyState_t JoySt;
 
 void setup() {
   TX_RX_LED_INIT;
+  pinMode(RXLED, OUTPUT);
+  TXLED0;
+  RXLED0;
+
   Serial.begin(9600);
   Serial1.begin(9600);
 
@@ -105,11 +109,11 @@ void task_led_toggle(void)
     // Serial.println("Hello world");  // Print "Hello World" to the Serial Monitor
     // Serial1.println("Hello!");  // Print "Hello!" over hardware UART
     if (on) {
-      RXLED1;
-      TXLED0;
+      //RXLED1;
+      //TXLED0;
     } else {
-      RXLED0;
-      TXLED1;
+      //RXLED0;
+      //TXLED1;
     }
     on = !on;
   }
@@ -117,6 +121,14 @@ void task_led_toggle(void)
 
 void task_serial_read(void) {
   // TODO
+  if(Serial.available()){
+    int inByte = Serial.read();
+    // Echo back...
+    // Serial.write(inByte);
+    // Add to message buffer...
+    
+    
+  }
 
 }
 
