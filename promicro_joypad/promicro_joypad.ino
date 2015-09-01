@@ -12,10 +12,10 @@
 
 #include "deb.h"
 
-#define JM_UP    0x10
-#define JM_DOWN  0x20
-#define JM_LEFT  0x40
-#define JM_RIGHT 0x80
+#define JM_UP    0x01
+#define JM_DOWN  0x02
+#define JM_LEFT  0x04
+#define JM_RIGHT 0x08
 
 const int RXLED = 17;
 const uint8_t d_map[16] = {2,3,4,5,6,7,8,9,
@@ -94,7 +94,7 @@ void task_inputs(void)
       JoySt.YAxis = 0;
     if (d_samp & JM_RIGHT)
       JoySt.YAxis = 255;
-    JoySt.Buttons = d_samp;
+    JoySt.Buttons = d_samp >> 4;
     Joystick.setState(&JoySt);
   }
 }
