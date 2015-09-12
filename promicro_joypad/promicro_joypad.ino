@@ -87,13 +87,13 @@ void task_inputs(void)
 
     JoySt.YAxis = JoySt.XAxis = 127;
     if (d_samp & JM_UP)
-      JoySt.XAxis = 0;
-    if (d_samp & JM_DOWN)
-      JoySt.XAxis = 255;
-    if (d_samp & JM_LEFT)
-      JoySt.YAxis = 0;
-    if (d_samp & JM_RIGHT)
       JoySt.YAxis = 255;
+    if (d_samp & JM_DOWN)
+      JoySt.YAxis = 0;
+    if (d_samp & JM_LEFT)
+      JoySt.XAxis = 0;
+    if (d_samp & JM_RIGHT)
+      JoySt.XAxis = 255;
     JoySt.Buttons = d_samp >> 4;
     Joystick.setState(&JoySt);
   }
